@@ -1,0 +1,195 @@
+.todo-page {
+  min-height: 100vh;
+  background: var(--bg-screen);
+  font-family: var(--font-primary);
+  position: relative;
+  padding-bottom: calc(var(--space-68) + var(--space-24)); /* make room for bottom nav + spacing */
+}
+
+/* Simulated status bar height (44px in Figma) */
+.status-spacer {
+  height: 44px;
+}
+
+/* AppBar (118px height per Figma group) */
+.appbar {
+  height: var(--space-118);
+  background: var(--appbar-bg);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 var(--space-20) var(--space-20) var(--space-20);
+  box-sizing: border-box;
+}
+
+.appbar__title {
+  font-size: var(--typo-8-size);
+  font-weight: var(--typo-8-weight);
+  line-height: var(--typo-8-line);
+  color: var(--typo-8-color);
+}
+
+.appbar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Todos list container (400px width in Figma; here full width with side padding) */
+.todos {
+  padding: var(--space-14);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-14);
+  box-sizing: border-box;
+}
+
+/* Todo card (style_22: bg white, radius 15, shadow) */
+.todo-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-15);
+  box-shadow: var(--shadow-0);
+  min-height: var(--space-82);
+  padding: var(--space-16) var(--space-16);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.todo-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.todo-card__title {
+  margin: 0;
+  font-size: var(--typo-9-size);
+  font-weight: var(--typo-9-weight);
+  line-height: var(--typo-9-line);
+  color: var(--title-color);
+}
+
+.todo-card__subtitle {
+  margin: 0;
+  font-size: var(--typo-10-size);
+  font-weight: var(--typo-10-weight);
+  line-height: var(--typo-10-line);
+  color: var(--subtitle-color);
+}
+
+/* Actions (Pencil, Trash, Check - each 25x25 in Figma) */
+.todo-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.todo-card.completed .todo-card__title {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+.todo-card.completed .todo-card__subtitle {
+  opacity: 0.7;
+}
+
+/* Floating Add Button (Ellipse 70x70 with white plus) */
+.fab {
+  position: fixed;
+  right: var(--space-24);
+  bottom: calc(var(--space-68) + var(--space-24)); /* sit above bottom nav */
+  width: var(--space-70);
+  height: var(--space-70);
+  border-radius: 50%;
+  background: var(--fab-bg);
+  box-shadow: var(--shadow-0);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fab__plus {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+.fab__plus::before,
+.fab__plus::after {
+  content: "";
+  position: absolute;
+  background: var(--fab-icon);
+  border-radius: 2px;
+}
+.fab__plus::before {
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.fab__plus::after {
+  width: 2px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+/* Bottom navigation (height 68 in Figma) */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--space-68);
+  background: var(--color-ffffff);
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.06);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 var(--space-24);
+  box-sizing: border-box;
+}
+
+.bottom-nav__item {
+  background: transparent;
+  border: none;
+  height: 100%;
+  display: flex;
+  gap: var(--space-4);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--nav-inactive);
+  cursor: pointer;
+}
+
+.bottom-nav__item.active {
+  color: var(--nav-active);
+}
+
+.bottom-nav__label {
+  font-size: var(--typo-6-size);
+  font-weight: var(--typo-6-weight);
+  line-height: var(--typo-6-line);
+}
+
+/* Small responsive tweaks */
+@media (min-width: 420px) {
+  .todos {
+    max-width: 414px;
+    margin: 0 auto;
+  }
+}
